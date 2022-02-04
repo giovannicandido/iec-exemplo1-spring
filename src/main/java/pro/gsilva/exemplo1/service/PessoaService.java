@@ -1,7 +1,10 @@
 package pro.gsilva.exemplo1.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import pro.gsilva.exemplo1.model.Pessoa;
@@ -16,7 +19,11 @@ public class PessoaService {
     }
 
     @Transactional
-    public void create(Pessoa pessoa) {
-        this.repository.create(pessoa);
+    public int create(Pessoa pessoa) {
+        return this.repository.create(pessoa);
+    }
+
+    public List<Pessoa> findAll() {
+        return repository.findAll();
     }
 }
