@@ -27,4 +27,17 @@ public class PessoaRepository {
             .getResultList();
     }
 
+    public Pessoa findById(Integer id) {
+        return entityManager.find(Pessoa.class, id);
+    }
+
+    public void update(Pessoa byId) {
+        entityManager.merge(byId);
+
+    }
+    public void delete(Integer id) {
+        Pessoa byId = entityManager.find(Pessoa.class, id);
+        entityManager.remove(byId);
+    }
+
 }

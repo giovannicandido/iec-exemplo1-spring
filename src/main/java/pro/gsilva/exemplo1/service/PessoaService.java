@@ -26,4 +26,17 @@ public class PessoaService {
     public List<Pessoa> findAll() {
         return repository.findAll();
     }
+
+    @Transactional
+    public void update(Integer id, Pessoa pessoa) {
+        Pessoa byId = repository.findById(id);
+        byId.setNome(pessoa.getNome());
+        repository.update(byId);
+
+    }
+
+    @Transactional
+    public void deleteById(Integer id) {
+        this.repository.delete(id);
+    }
 }
